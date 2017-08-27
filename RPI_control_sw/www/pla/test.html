@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" media="only screen and (max-width: 400px)" href="css/style.css" />
+	<link rel="stylesheet" media="only screen and (min-width: 401px)" href="css/style.css" />
+	<link rel="stylesheet" href="font/font-awesome-4.4.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<meta name="author" content="Marco Visentin" />
+</head>
+<body>
+	<div class="center">
+		<button id="first" style="display: block" class="small back" onclick="exitGo('settings.html')"><i class="fa fa-reply fa-lg"></i></button>
+		<button style="display: inline" onclick="$.post('/planetario.fcgi', { 'bAllLightsOn': 1 });">Tutte luci ON</button>
+		<button style="display: inline" onclick="$.post('/planetario.fcgi', { 'bAllLightsOff': 1 });">Tutte luci OFF</button>
+	</div>
+
+	<hr />
+
+	<form method="post">
+		<h1>Motore</h1>
+		<div class="center-div">
+			<input id="LAT" type="radio" value=0 name="motor" /><label for="LAT">Latitudine</label><br />
+			<input id="AR" type="radio" value=1 name="motor" /><label for="AR">Ascensione retta</label><br />
+			<input id="PREC" type="radio" value=2 name="motor" /><label for="PREC">Precessione</label><br />
+		</div>
+
+		<div id="settings" class="list">
+			<div id="test-sets">
+				<li><p>Velocità: </p><input type="number" id="motorSpeed" onBlur="$.post('/planetario.fcgi', { 'motorSpeed': this.value });" /></li>
+				<li><p>Target: </p><input style="border-top-color: transparent!important" type="number" id="motorTarget" onBlur="$.post('/planetario.fcgi', { 'motorTarget': this.value });" /></li>
+				<li><p>Declinazione: </p><pre id="decl"></pre></li>
+				<li><p>Ascensione retta: </p><pre id="ascRetta"></pre></li>
+				<li><p>Asc. retta offset: </p><pre id="ascRettaOffset"></pre></li>
+				<li><p>Precessione: </p><pre id="precessione"></pre></li>
+			</div>
+		</div>
+	</form>
+	<div class="center">
+		<button onclick="test('Zero')"><i class="fa fa-hand-spock-o fa-2x"></i>  Zero</button>
+		<button onclick="test('Move')"><i class="fa fa-gears fa-2x"></i>  Move</button>
+		<button id="abort" onclick="exitGo('test.html')"><i class="fa fa-times-circle fa-2x"></i>  STOP!</button>
+	</div>
+
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/test.js"></script>
+</body>
+</html>

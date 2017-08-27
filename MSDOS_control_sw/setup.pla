@@ -1,0 +1,15 @@
+versione=1              ;versione del file di configurazione
+AR Sole=18.00           ;AR del Sole [ore.minuti]
+AR Luna=03.22           ;AR della Luna [ore.minuti]
+latitudine=45.0         ;latitudine del luogo di simulazione [gradi.minuti]
+luce cielo=10           ;luce di fondo del cielo di notte [5-250]
+AR Mercurio=00.88       ;AR Mercurio [ore.minuti]
+AR Venere=20.00         ;AR Venere   [ore.minuti]
+AR Marte=12.00          ;AR Marte    [ore.minuti]
+AR Giove=7.00           ;AR Giove    [ore.minuti]
+AR Saturno=15.00        ;AR Saturno  [ore.minuti]
+Max stelle=800          ;intensit… massima delle stelle 0-2047
+Velocita=100            ;velocit… di avanzamento presentazione
+------------------------------------
+NON CAMBIARE LA STRUTTURA DEL FILE AL DI SOPRA DI QUESTA RIGA A MENO
+DI NON VOLER SOSTITUIRE I PARAMETRI!

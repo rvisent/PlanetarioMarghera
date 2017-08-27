@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Planetario</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" media="only screen and (max-width: 400px)" href="css/style.css" />
+	<link rel="stylesheet" media="only screen and (min-width: 401px)" href="css/style.css" />
+	<link rel="stylesheet" href="font/font-awesome-4.4.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<meta name="author" content="Marco Visentin" />
+	<style type="text/css">
+		button {display: block; text-align: left; padding-left: 2mm}
+	</style>
+</head>
+<body>
+	<button id="first" onclick="window.location.replace('simulation.html')"><i class="fa fa-fighter-jet fa-lg"></i> simulazione</button>
+	<button id="safepos" onclick="safepos()"><i class="fa fa-power-off fa-lg"></i> pos. sicura</button>
+	<!--<button id="safepos" onclick="safepos()"><i class="fa fa-life-ring fa-lg"></i> pos. sicura</button>
+	<button id="shutdown" onclick="shutdown()"><i class="fa fa-power-off fa-lg"></i> shutdown</button>-->
+	<button id="zero" onclick="zeropos()"><i class="fa fa-hand-spock-o fa-lg"></i> azzeramento</button>
+	<button onclick="window.location.replace('settings.html')"><i class="fa fa-gear fa-lg"></i> impostazioni</button>
+	<button onclick="window.location.replace('lights.html')"><i class="fa fa-lightbulb-o fa-lg"></i> luci</button>
+
+	<div class="list" id="data">
+		<!-- JS content here -->
+	</div>
+
+	<div class="center"><button id="abort" onclick="abort()"><i class="fa fa-times-circle fa-2x"></i>  STOP!</button></div>
+
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Luci</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" media="only screen and (max-width: 400px)" href="css/style.css" />
+	<link rel="stylesheet" media="only screen and (min-width: 401px)" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+	<link rel="stylesheet" href="font/font-awesome-4.4.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.ui.touch-punch.js"></script>
+	<meta name="author" content="Marco Visentin" />
+</head>
+<body>
+	<div class="center">
+		<button id="first" class="small back" onclick="goback()"><i class="fa fa-reply fa-lg"></i></button>
+		<a id="play-button">
+			<button class="small" id="play"></button>
+		</a>
+        <button id="abort" class="small" onclick="abort()"><i class="fa fa-times-circle fa-lg"></i></button>
+	</div>
+	<div>
+		<div id="settings" class="list">
+			<div id="digital_lights">
+				<li><p>Pianeti</p><button id="pianeti" class="pianeti toggle" onclick="toggle(12, this.id)"></button></li>
+				<li><p>Declinazione</p><button id="declinazione" class="declinazione toggle" onclick="toggle(13, this.id)"></button></li>
+				<li><p>Punti cardinali</p><button id="p_cardinali" class="p_cardinali toggle" onclick="toggle(14, this.id)"></button></li>
+				<!--<li><p>Luce sala</p><button id="luce_sala" class="luce_sala toggle" onclick="toggle(15, this.id)"></button></li>-->
+				<li><p>Cerchio polare</p><button id="cerchio_polare" class="cerchio_polare toggle" onclick="toggle(16, this.id)"></button></li>
+			</div>
+			<div id="off_in_run">
+				<li><p>Alba: </p><pre id="alba" class="alba light" onclick="show(9, this.id)"></pre></li>
+				<li><p>Tramonto: </p><pre id="tramonto" class="tramonto light" onclick="show(11, this.id)"></pre></li>
+			</div>
+			<div id="analog_lights">
+				<li><p>Giorno: </p><pre id="giorno" class="giorno light" onclick="show(10, this.id)"></pre></li>
+				<li><p>Sole: </p><pre id="sole" class="sole light" onclick="show(1, this.id)"></pre></li>
+				<li><p>Luna: </p><pre id="luna" class="luna light" onclick="show(2, this.id)"></pre></li>
+				<li><p>Stelle: </p><pre id="stelle" class="stelle light" onclick="show(3, this.id)"></pre></li>
+				<li><p>Supernova: </p><pre id="supernova" class="supernova light" onclick="show(5, this.id)"></pre></li>
+                <li><p>P.Nebula: </p><pre id="p_nebula" class="p_nebula light" onclick="show(6, this.id)"></pre></li>
+				<!--<li><p>Cerchio orario: </p><pre id="cerchio_orario" class="cerchio_orario light" onclick="show(4, this.id)"></pre></li>
+				<li><p>Nuove stelle: </p><pre id="nuove_s" class="nuove_s light" onclick="show(7, this.id)"></pre></li>
+				<li><p>A. libero: </p><pre id="a_libero" class="a_libero light" onclick="show(8, this.id)"></pre></li>-->
+			</div>
+		</div>
+	</div>
+
+	<div id="modal">
+		<div id="name_value"></div>
+		<div id="slider" style="margin-left:5mm; margin-right:5mm; margin-bottom:1cm"></div>
+        <div class="center">
+            <select id="selector">
+                <option>LUCE SPENTA</option>
+                <option>LUCE DEBOLE</option>
+                <option>LUCE MEDIA</option>
+                <option>LUCE MASSIMA</option>
+            </select>
+        </div>
+        <div class="center">
+            <button id="close" onclick="modal.style.display = 'none'; $('#settings').css('display', 'block');">Ok</button>
+        </div>
+    </div>
+
+    <audio id="beep" src="media/tone-beep.wav" type="audio/wav" preload="auto"></audio>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/lights.js"></script>
+</body>
+</html>

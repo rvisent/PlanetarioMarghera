@@ -1,0 +1,40 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Impostazione astri</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" media="only screen and (max-width: 400px)" href="css/style.css" />
+	<link rel="stylesheet" media="only screen and (min-width: 401px)" href="css/style.css" />
+	<link rel="stylesheet" href="font/font-awesome-4.4.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<meta name="author" content="Marco Visentin" />
+</head>
+<body>
+	<div class="center">
+		<button id="first" class="small back" onclick="exitGo('settings.html')"><i class="fa fa-reply fa-lg"></i></button>
+		<button class="high" onclick="exitGo('index.html')"><i class="fa fa-home fa-lg"></i> home</button>
+		<div class="list" id="set-data">
+			<!-- JS content here -->
+		</div>
+	</div>
+	<div class="center-div">
+		<input id="SET_SOLE" type="radio" value=0 name="planet" /><label for="SET_SOLE">Sole</label><br />
+		<input id="SET_LUNA" type="radio" value=1 name="planet" /><label for="SET_LUNA">Luna</label><br />
+		<input id="SET_MERCURIO" type="radio" value=2 name="planet" /><label for="SET_MERCURIO">Mercurio</label><br />
+		<input id="SET_VENERE" type="radio" value=3 name="planet" /><label for="SET_VENERE">Venere</label><br />
+		<input id="SET_MARTE" type="radio" value=4 name="planet" /><label for="SET_MARTE">Marte</label><br />
+		<input id="SET_GIOVE" type="radio" value=5 name="planet" /><label for="SET_GIOVE">Giove</label><br />
+		<input id="SET_SATURNO" type="radio" value=6 name="planet" /><label for="SET_SATURNO">Saturno</label><br />
+	</div>
+	<div class="center">
+	<input type="submit" name="submit" value="OK" onclick="set()" />
+	</div>
+
+	<div class="center"><button id="abort" onclick="abort()"><i class="fa fa-times-circle fa-2x"></i>  STOP!</button></div>
+
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/planets.js"></script>
+</body>
+</html>

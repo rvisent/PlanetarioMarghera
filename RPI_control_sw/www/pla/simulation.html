@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Simulazione</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" media="only screen and (max-width: 400px)" href="css/style.css" />
+	<link rel="stylesheet" media="only screen and (min-width: 401px)" href="css/style.css" />
+	<link rel="stylesheet" href="font/font-awesome-4.4.0/css/font-awesome.min.css">
+    <style type="text/css">
+        a#play-button {
+            margin-top: 5px;
+            display: block;
+        }
+
+        button#play {
+            padding: 13.5px 0;
+        }
+
+        button#abort {
+            margin: 0;
+        }
+    </style>
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<meta name="author" content="Marco Visentin" />
+</head>
+<body">
+	<div class="center">
+		<button id="first" class="small back" onclick="window.location.replace('index.html')"><i class="fa fa-reply fa-lg"></i></button>
+        <button class="small" onclick="window.location.replace('precdecl.html')"><i class="fa fa-globe fa-lg"></i></button>
+        <button class="small" onclick="window.location.replace('lights.html')"><i class="fa fa-lightbulb-o fa-lg"></i></button>
+	</div>
+
+	<div class="list" id="infos">
+		<!-- JS content here -->
+	</div>
+
+	<div class="center">
+        <a id="play-button">
+            <button id="play"></button>
+        </a>
+        <button id="abort" onclick="abort()"><i class="fa fa-times-circle fa-2x"></i>  STOP!</button>
+    </div>
+    
+    <audio id="beep" src="media/tone-beep.wav" type="audio/wav" preload="auto"></audio>
+    <script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/simulation.js"></script>
+</body>
+</html>

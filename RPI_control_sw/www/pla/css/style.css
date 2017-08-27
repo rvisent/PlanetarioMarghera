@@ -1,0 +1,239 @@
+﻿@import url(../css/font.css);
+
+* {
+    font-family: 'Open Sans';
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    overflow-x: hidden;
+    min-height: 500px;
+}
+
+button, input[type="submit"] {
+    min-width: 150px;
+    margin: 10px auto;
+    padding: 10px 0;
+    background: #a84400;
+    color: white;
+    border-radius: 7px;
+    border: none;
+}
+
+label {
+    color: #fff;
+    padding-left: 10px;
+}
+
+.small {
+    min-width: 0;
+    width: 60px;
+    height: 38px;
+    vertical-align: -1px;
+}
+
+.high {
+    height: 38px;
+    vertical-align: -1px;
+}
+
+.center {
+    width: 100%;
+    min-height: 80px;
+    text-align: center;
+}
+
+.center-div {
+    display: table;
+	margin: 15px auto;
+}
+
+.list li {
+    width: 80%;
+    margin: 0 10%;
+    display: block;
+    list-style: none;
+    font-size: 10pt;
+    height: 45px;
+    border-bottom: 1px solid #a84400;
+    color: white;
+}
+
+p {
+    display: inline;
+    float: left;
+}
+
+pre {
+    display: inline-block;
+    float: right;
+}
+
+#settings input {
+    max-width: 50px;
+    display: inline-block;
+    float: right;
+    background: none;
+    border: none;
+    color: #a4a3a3;
+    height: 42px;
+    text-align: right;
+}
+
+#test-sets input {
+    border: 1px solid #a84400!important;
+    max-width: 100px;
+}
+
+form {
+    margin: 10px auto;
+}
+
+hr {
+    height: 1px;
+    width: 80%;
+    margin: 20px 10%;
+    border: none;
+    border-bottom: 1px solid #a84400;
+}
+
+h1 {
+    text-align: center;
+    font-weight: normal;
+    font-size: 12pt;
+    text-transform: uppercase;
+    color: #a84400;
+}
+
+.toggle {
+    max-width: 42px;
+    min-width: 20px;
+    height: 26px;
+    border-radius: 7px;
+    float: right;
+    padding: 5px 0 15px 0;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 0;
+  width: 100px;
+  max-width: 200px!important;
+  padding: 0!important;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: #a84400;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-webkit-slider-thumb {
+  height: 30px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -14px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #a84400;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: #a84400;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-moz-range-thumb {
+  height: 30px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #a84400;
+  border-radius: 2.6px;
+}
+input[type=range]::-ms-fill-upper {
+  background: #a84400;
+  border-radius: 2.6px;
+}
+input[type=range]::-ms-thumb {
+  height: 30px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+@media(min-width: 700px) {
+    input[type=range] {
+        max-width: 500px!important;
+        width: 500px;
+    }
+}
+
+#shade, #modal {
+    display: none;
+}
+
+#shade {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#modal {
+    position: fixed;
+    z-index: 101;
+    top: 33%;
+    left: 0;
+    width: 100%;
+    background: black;
+    padding-top: 20px;
+}
+
+#shade {
+    background: black;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+.ui-slider {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#name_value {
+    width: 100%;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    text-transform: uppercase;
+}

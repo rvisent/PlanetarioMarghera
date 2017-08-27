@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Impostazioni</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" media="only screen and (max-width: 400px)" href="css/style.css" />
+	<link rel="stylesheet" media="only screen and (min-width: 401px)" href="css/style.css" />
+	<link rel="stylesheet" href="font/font-awesome-4.4.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<meta name="author" content="Marco Visentin" />
+</head>
+<body>
+	<div class="center">
+		<button id="first" class="small back" onclick="window.location.replace('index.html')"><i class="fa fa-reply fa-lg"></i></button>
+		<button class="high" onclick="window.location.replace('planets.html')">Proiettori astri</button>
+	</div>
+	<div>
+		<form id="settings">
+			<div class="list" id="sets">
+				<li><p>Anno Precessione: </p><input type="number" id="annoPrecessione" onBlur="$.post('/planetario.fcgi', { 'annoPrecessione': this.value });" /></li>
+			</div>
+			<div class="list" id="aux-sets">
+				<li><p>Latitudine: </p><input type="number" id="latitude" onBlur="$.post('/planetario.fcgi', { 'latitude': this.value });" /></li>
+				<li><p>Luce orizzonte: </p><input type="number" id="horlight" onBlur="$.post('/planetario.fcgi', { 'horlight': this.value });" /></li>
+				<li><p>Luce stelle: </p><input type="number" id="maxstars" onBlur="$.post('/planetario.fcgi', { 'maxstars': this.value });" /></li>
+				<li><p>Velocità S/M: </p><input type="number" id="speed" onBlur="$.post('/planetario.fcgi', { 'speed': this.value });" /></li>
+				<li><p>AR Sole: </p><input type="number" id="sun_ar" onBlur="$.post('/planetario.fcgi', { 'sun_ar': this.value });" /></li>
+				<li><p>AR Luna: </p><input type="number" id="moon_ar" onBlur="$.post('/planetario.fcgi', { 'moon_ar': this.value });" /></li>
+				<li><p>AR Mercurio: </p><input type="number" id="mercury_ar" onBlur="$.post('/planetario.fcgi', { 'mercury_ar': this.value });" /></li>
+				<li><p>AR Venere: </p><input type="number" id="venus_ar" onBlur="$.post('/planetario.fcgi', { 'venus_ar': this.value });" /></li>
+				<li><p>AR Marte: </p><input type="number" id="mars_ar" onBlur="$.post('/planetario.fcgi', { 'mars_ar': this.value });" /></li>
+				<li><p>AR Giove: </p><input type="number" id="jupiter_ar" onBlur="$.post('/planetario.fcgi', { 'jupiter_ar': this.value });" /></li>
+				<li><p>AR Saturno: </p><input type="number" id="saturn_ar" onBlur="$.post('/planetario.fcgi', { 'saturn_ar': this.value });" /></li>
+			</div>
+		</form>
+		<button style="display: block" onclick="$.post('/planetario.fcgi', {'NewMode': MODE.MODE_SAVE});"><i class="fa fa-file-text-o fa-lg"></i> salva</button>
+		<button style="display: block" onclick="$.post('/planetario.fcgi', {'NewMode': MODE.MODE_DEFAULT}); delayedReload();">Valori predefiniti</button>
+		<!--<button style="display: block" onclick="window.location.replace('test.html')">Modo test</button>-->
+	</div>
+
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/settings.js"></script>
+</body>
+</html>

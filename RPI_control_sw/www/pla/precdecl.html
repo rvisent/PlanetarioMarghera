@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Precessione e declinazione</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" media="only screen and (max-width: 400px)" href="css/style.css" />
+    <link rel="stylesheet" media="only screen and (min-width: 401px)" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" href="font/font-awesome-4.4.0/css/font-awesome.min.css">
+    <style type="text/css">
+        #settings button {
+            display: inline;
+        }
+
+        @media (max-width: 400px) {
+            #settings button {
+                display: block;
+            }
+        }
+
+        @media (min-width: 400px) and (max-width: 465px) {
+            #settings button:nth-child(3), #settings button:nth-child(4) {
+                margin-left: -15%;
+            }
+        }
+
+        @media (min-width: 400px) and (max-width: 620px) {
+            #settings .center {
+                min-height: 130px;
+            }
+            #settings button {
+                display: block!important;
+            }
+
+            #settings button:nth-child(1), #settings button:nth-child(2) {
+                float: left;
+            }
+
+            #settings button:nth-child(3), #settings button:nth-child(4) {
+                float: right;
+            }
+
+            #settings button:nth-child(2) {
+                transform: translate(-150px, 60px);
+            }
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.touch-punch.js"></script>
+    <meta name="author" content="Marco Visentin" />
+</head>
+<body>
+    <div class="center">
+        <button id="first" class="small back" onclick="goback()"><i class="fa fa-reply fa-lg"></i></button>
+        <a id="play-button">
+            <button class="small" id="play"></button>
+        </a>
+        <button id="abort" class="small" onclick="abort()"><i class="fa fa-times-circle fa-lg"></i></button>
+    </div>
+    <div>
+        <div id="settings" class="list">
+            <li><p>Declinazione</p><pre id="declinazione"></pre></li>
+            <div class="center">
+                <button class="small" onclick="decl(-1)">-1°</button>
+                <button class="small" onclick="decl(1)">+1°</button>
+                <br />
+                <button class="small" onclick="decl(-10)">-10°</button>
+                <button class="small" onclick="decl(10)">+10°</button>
+            </div>
+            <hr />
+            <li><p>Precessione</p><pre id="precessione" class="" onclick="show(9, this.id)"></pre></li>
+            <div class="center">
+                <button class="small" onclick="prec(-100)">-100</button>
+                <button class="small" onclick="prec(100)">+100</button>
+                <br />
+                <button class="small" onclick="prec(-1000)">-1000</button>
+                <button class="small" onclick="prec(1000)">+1000</button>
+            </div>
+            <hr />
+        </div>
+    </div>
+
+    <audio id="beep" src="media/tone-beep.wav" type="audio/wav" preload="auto"></audio>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/precdecl.js"></script>
+</body>
+</html>
