@@ -9,5 +9,5 @@ The MSDOS-based planetarium control software, developed in year ~2000 by gianpif
 Schematics and firmwares for the microcontroller boards mounted on the planetarium
 * 2 motor controllers (2 motors each)
 * 1 light controller (all lights)
-## docs
+## doc
 schematics, presentations, etc.
