@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+        function createTable() {
+            // disabilita cache ajax globalmente
+            $(document).ready(function() {
+                $.ajaxSetup({ cache: false });
+                });
+            // leggi i dati per la prima volta
+            $.getJSON("planetario.fcgi?mainset", function (data, status) {
+                var html = '<table id="mainset_table" border="1">';// width="500px">';
+                var counter = 0;
+                var fieldId;
+                for (property in data) {
+                    if (counter > 2) {
+                        html += "<tr>";
+                        fieldId = 'mainset_id_' + property;
+                        html += "<td style='padding:0px 10px'>" + property + "</td><td id='" + fieldId + "' style='padding:0px 10px'>" + data[property] + "</td>"
+                        html += "</tr>";
+                    }
+                    counter++;
+                }
+                html += "</table>"
+                $('#mainset').append('MAINSET<br />'+html);
+
+                // timer di aggiornamento se almeno una tabella ok
+                if (document.getElementById('mainset')!=null)
+                    //setInterval(function () { timerFun() }, 200);
+                    setInterval(timerFun, 200);
+            });
+
+            $.getJSON("planetario.fcgi?luci", function (data, status) {
+                var html = '<table border="1">';// width="500px">';
+                var counter = 0;
+                var fieldId;
+                for (property in data) {
+                    if (counter > 2) {
+                        html += "<tr>";
+                        fieldId = 'luci_id_' + property;
+                        html += "<td style='padding:0px 10px'>" + property + "</td><td id='" + fieldId + "' style='padding:0px 10px'>" + data[property] + "</td>"
+                        html += "</tr>";
+                    }
+                    counter++;
+                }
+                html += "</table>"
+                $('#luci').append('LUCI<br />' + html);
+            });
+
+            $.getJSON("planetario.fcgi?auxiliary", function (data, status) {
+                var html = '<table border="1">';// width="500px">';
+                var counter = 0;
+                var fieldId;
+                for (property in data) {
+                    if (counter > 2) {
+                        html += "<tr>";
+                        fieldId = 'auxiliary_id_' + property;
+                        html += "<td style='padding:0px 10px'>" + property + "</td><td id='" + fieldId + "' style='padding:0px 10px'>" + data[property] + "</td>"
+                        html += "</tr>";
+                    }
+                    counter++;
+                }
+                html += "</table>"
+                $('#auxiliary').append('AUXILIARY<br />' + html);
+            });
+
+            $.getJSON("planetario.fcgi?test", function (data, status) {
+                var html = '<table border="1">';// width="500px">';
+                var counter = 0;
+                var fieldId;
+                for (property in data) {
+                    if (counter > 2) {
+                        html += "<tr>";
+                        fieldId = 'test_id_' + property;
+                        html += "<td style='padding:0px 10px'>" + property + "</td><td id='" + fieldId + "' style='padding:0px 10px'>" + data[property] + "</td>"
+                        html += "</tr>";
+                    }
+                    counter++;
+                }
+                html += "</table>"
+                $('#test').append('TEST<br />' + html);
+            });
+
+            var methods = ["bAbort", "bSuspend", "bContinue", "bResetError", "NewMode", "NewSettingMode", "lightToBeChanged",
+                "lightLevel", "annoPrecessione", "latitude", "horlight", "maxstars", "speed", "sun_ar", "moon_ar", "mercury_ar",
+                "venus_ar", "mars_ar", "jupiter_ar", "saturn_ar", "time_hour",
+                "bAllLightsOff", "bAllLightsOn", "bTestZero", "bTestMove", "motorSpeed", "motorTarget", "motorId"];
+
+            var labels = ["Abort", "Suspend", "Continue", "Reset Error", "NewMode", "NewSettingMode", "lightToBeChanged",
+                "lightLevel", "annoPrecessione", "latitude", "horlight", "maxstars", "speed", "sun_ar", "moon_ar", "mercury_ar",
+                "venus_ar", "mars_ar", "jupiter_ar", "saturn_ar", "time_hour",
+                "AllLightsOff", "AllLightsOn", "TestZero", "TestMove", "motorSpeed", "motorTarget", "motorId"];
+
+            for (i = 0; i < methods.length; i++) {
+                if (methods[i].charAt(0) == 'b') {
+                    // boolean: solo bottone, accendi col click
+                    $("#post").append(
+                        '<button onclick="$.post(\'planetario.fcgi\', { \'' + methods[i] + '\': 1 });">' + labels[i] + '</button>'
+                    );
+                }
+                else {
+                    var id = 'textId' + methods[i];
+                    $("#post").append(
+                        '<div>' +
+                            '<input type="text" id="' + id + '"></input>' +
+                            '<button onclick="$.post(\'planetario.fcgi\', { \'' + methods[i] + '\': document.getElementById(\'' + id + '\').value });">' + labels[i] + '</button>' +
+                        '</div>'
+                    );
+                }
+            }
+
+            // timer di aggiornamento se almeno una tabella ok
+            if (document.getElementById('mainset_table') != null)
+                //setInterval(function () { timerFun() }, 200);
+                setInterval(timerFun, 100);
+        }
+
+        var cycle = 0;
+        function timerFun() {
+            // aggiorna i dati ogni 100 ms, alterna mainset con luci/aux/test
+            if (cycle==0) {
+                $.getJSON("planetario.fcgi?mainset", function (data, status) {
+                    var counter = 0;
+                    for (property in data) {
+                        if (counter > 2) {
+                            fieldId = '#mainset_id_' + property;
+                            $(fieldId).text(data[property]);
+                        }
+                        counter++;
+                    }
+                });
+                cycle = 1;
+            }
+            else {
+                $.getJSON("planetario.fcgi?luci", function (data, status) {
+                    var counter = 0;
+                    for (property in data) {
+                        if (counter > 2) {
+                            fieldId = '#luci_id_' + property;
+                            $(fieldId).text(data[property]);
+                        }
+                        counter++;
+                    }
+                });
+
+                $.getJSON("planetario.fcgi?auxiliary", function (data, status) {
+                    var counter = 0;
+                    for (property in data) {
+                        if (counter > 2) {
+                            fieldId = '#auxiliary_id_' + property;
+                            $(fieldId).text(data[property]);
+                        }
+                        counter++;
+                    }
+                });
+
+                $.getJSON("planetario.fcgi?test", function (data, status) {
+                    var counter = 0;
+                    for (property in data) {
+                        if (counter > 2) {
+                            fieldId = '#test_id_' + property;
+                            $(fieldId).text(data[property]);
+                        }
+                        counter++;
+                    }
+                });
+                cycle = 0;
+            }
+        }
+
+    </script>
+
+</head>
+<body onload="javascript:createTable();">
+    <table>
+        <tr>
+            <td id="mainset" valign="top"></td>
+            <td id="luci" valign="top"></td>
+            <td valign="top">
+                <table>
+                    <tr>
+                        <td id="auxiliary" valign="top"></td>
+                    </tr>
+                    <tr>
+                        <td id="test" valign="top"></td>
+                    </tr>
+                </table>
+            </td>
+            <td id="post" valign="top" style="border: 1px double black;"></td>
+        </tr>
+    </table>
+</body>
+</html>
