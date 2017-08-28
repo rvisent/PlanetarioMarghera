@@ -11,7 +11,7 @@
                 $.ajaxSetup({ cache: false });
                 });
             // leggi i dati per la prima volta
-            $.getJSON("planetario.fcgi?mainset", function (data, status) {
+            $.getJSON("/planetario.fcgi?mainset", function (data, status) {
                 var html = '<table id="mainset_table" border="1">';// width="500px">';
                 var counter = 0;
                 var fieldId;
@@ -33,7 +33,7 @@
                     setInterval(timerFun, 200);
             });
 
-            $.getJSON("planetario.fcgi?luci", function (data, status) {
+            $.getJSON("/planetario.fcgi?luci", function (data, status) {
                 var html = '<table border="1">';// width="500px">';
                 var counter = 0;
                 var fieldId;
@@ -50,7 +50,7 @@
                 $('#luci').append('LUCI<br />' + html);
             });
 
-            $.getJSON("planetario.fcgi?auxiliary", function (data, status) {
+            $.getJSON("/planetario.fcgi?auxiliary", function (data, status) {
                 var html = '<table border="1">';// width="500px">';
                 var counter = 0;
                 var fieldId;
@@ -67,7 +67,7 @@
                 $('#auxiliary').append('AUXILIARY<br />' + html);
             });
 
-            $.getJSON("planetario.fcgi?test", function (data, status) {
+            $.getJSON("/planetario.fcgi?test", function (data, status) {
                 var html = '<table border="1">';// width="500px">';
                 var counter = 0;
                 var fieldId;
@@ -98,7 +98,7 @@
                 if (methods[i].charAt(0) == 'b') {
                     // boolean: solo bottone, accendi col click
                     $("#post").append(
-                        '<button onclick="$.post(\'planetario.fcgi\', { \'' + methods[i] + '\': 1 });">' + labels[i] + '</button>'
+                        '<button onclick="$.post(\'/planetario.fcgi\', { \'' + methods[i] + '\': 1 });">' + labels[i] + '</button>'
                     );
                 }
                 else {
@@ -106,7 +106,7 @@
                     $("#post").append(
                         '<div>' +
                             '<input type="text" id="' + id + '"></input>' +
-                            '<button onclick="$.post(\'planetario.fcgi\', { \'' + methods[i] + '\': document.getElementById(\'' + id + '\').value });">' + labels[i] + '</button>' +
+                            '<button onclick="$.post(\'/planetario.fcgi\', { \'' + methods[i] + '\': document.getElementById(\'' + id + '\').value });">' + labels[i] + '</button>' +
                         '</div>'
                     );
                 }
@@ -122,7 +122,7 @@
         function timerFun() {
             // aggiorna i dati ogni 100 ms, alterna mainset con luci/aux/test
             if (cycle==0) {
-                $.getJSON("planetario.fcgi?mainset", function (data, status) {
+                $.getJSON("/planetario.fcgi?mainset", function (data, status) {
                     var counter = 0;
                     for (property in data) {
                         if (counter > 2) {
@@ -135,7 +135,7 @@
                 cycle = 1;
             }
             else {
-                $.getJSON("planetario.fcgi?luci", function (data, status) {
+                $.getJSON("/planetario.fcgi?luci", function (data, status) {
                     var counter = 0;
                     for (property in data) {
                         if (counter > 2) {
@@ -146,7 +146,7 @@
                     }
                 });
 
-                $.getJSON("planetario.fcgi?auxiliary", function (data, status) {
+                $.getJSON("/planetario.fcgi?auxiliary", function (data, status) {
                     var counter = 0;
                     for (property in data) {
                         if (counter > 2) {
@@ -157,7 +157,7 @@
                     }
                 });
 
-                $.getJSON("planetario.fcgi?test", function (data, status) {
+                $.getJSON("/planetario.fcgi?test", function (data, status) {
                     var counter = 0;
                     for (property in data) {
                         if (counter > 2) {
